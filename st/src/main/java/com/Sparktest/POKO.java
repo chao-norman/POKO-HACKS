@@ -25,7 +25,6 @@ public class POKO {
                     System.out.println(room.getTitle() + ", created " + room.getCreated() + ": " + room.getId());
                 });
 
-
         // Create a new room
         Room room = new Room();
         room.setTitle("Hello World");
@@ -49,6 +48,12 @@ public class POKO {
         Message message = new Message();
         message.setRoomId(room.getId());
         message.setText("Hello World!");
+        spark.messages().post(message);
+
+        // Share a file with the room
+        message = new Message();
+        message.setRoomId(room.getId());
+        message.setFiles(URI.create("https://i.imgur.com/qLO4grP.gif?noredirect"));
         spark.messages().post(message);
 
     }
